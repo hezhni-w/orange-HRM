@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
 
@@ -23,20 +27,25 @@ public class LoginPage {
     private WebElement errorMessagePassword;
 
     private final WebDriver driver;
+    private WebDriverWait wait;
+
 
     public LoginPage(WebDriver driver) {
         this.driver=driver;
         //Initialising the page elements
         PageFactory.initElements(driver,this);
+        wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
 
     }
     public LoginPage typeUsername(String username) {
+        wait.until(ExpectedConditions.visibilityOf(usernameField));
         usernameField.sendKeys(username);
         return this;
 
     }
 
     public LoginPage typePassword(String password){
+        wait.until(ExpectedConditions.visibilityOf(passwordField));
         passwordField.sendKeys(password);
         return this;
     }
@@ -58,11 +67,13 @@ public class LoginPage {
     }
 
     public LoginPage clearUsername(){
+        wait.until(ExpectedConditions.visibilityOf(usernameField));
         usernameField.clear();
         return this;
     }
 
     public LoginPage clearPassword(){
+        wait.until(ExpectedConditions.visibilityOf(passwordField));
         passwordField.clear();
         return this;
     }
