@@ -16,9 +16,10 @@ import org.testng.annotations.BeforeSuite;
 
 public class TestBase {
 
+    public static final String BASE_URL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
     WebDriver driver;
     public final String BROWSER = "chrome";
-    public final Boolean HEADLESS = true;
+    public final Boolean HEADLESS = false;
 
     @BeforeSuite
     public void beforeSuite(){
@@ -66,16 +67,13 @@ public class TestBase {
         else {
             throw new RuntimeException("Invalid Browser name:" + BROWSER);
         }
-        driver = new ChromeDriver();
         driver.manage().window().maximize();
-        //url
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        driver.get(BASE_URL);
 
     }
 
     @AfterMethod
     public void afterMethod(){
-        System.out.println("TestBase.afterMethod");
-        //driver.quit();
+        driver.quit();
     }
 }
