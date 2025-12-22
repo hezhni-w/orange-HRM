@@ -68,7 +68,7 @@ public class TestBase {
         }
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.orangehrm.com/");
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 
     }
 
