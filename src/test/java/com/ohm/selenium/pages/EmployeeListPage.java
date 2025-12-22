@@ -1,4 +1,4 @@
 package com.ohm.selenium.pages;
 
-public class AddEmployee {
+public class EmployeeListPage {
 }
