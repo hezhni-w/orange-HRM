@@ -76,4 +76,9 @@ public class TestBase {
     public void afterMethod(){
         driver.quit();
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
 }
