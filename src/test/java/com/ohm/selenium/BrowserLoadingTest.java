@@ -36,6 +36,7 @@ public class BrowserLoadingTest {
         driver.get(BASE_URL);
     }
 
+    // test commit check
 
     @Test
     public void testBrowserLoading(){
