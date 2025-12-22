@@ -12,16 +12,11 @@ public class LoginTest extends TestBase {
 
     @Test
     public void testWithValidCredentials() {
-
-
-        //Creating instance of Login Pg
         LoginPage loginpage = new LoginPage(getDriver());
         loginpage.typeUsername("Admin");
         loginpage.typePassword("admin123");
         loginpage.clickLoginButton();
-
-        // ProductPage productPage = new ProductPage(driver);
-        // Assert.assertEquals(productPage.getTitle(), "products");
+        //FIXME: Please add assertion to verify the Dashboard title here
     }
 
 
@@ -39,8 +34,6 @@ public class LoginTest extends TestBase {
         String actualError = loginpage.getErrorMessageUsername();
         Assert.assertEquals(actualError, "required");
         driver.close();
-
-
     }
 
 
