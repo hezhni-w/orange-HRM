@@ -26,6 +26,9 @@ public class LoginPage {
     @FindBy(xpath = "input[@placeholder='Password']/following::span[1]")
     private WebElement errorMessagePassword;
 
+    @FindBy(css = "p.oxd-alert-content-text")
+    private WebElement alertText;
+
     private final WebDriver driver;
     private WebDriverWait wait;
 
@@ -82,4 +85,8 @@ public class LoginPage {
         clearUsername().clearPassword();
     }
 
+    public String getError() {
+        wait.until(ExpectedConditions.visibilityOf(passwordField));
+        return alertText.getText();
+    }
 }

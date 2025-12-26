@@ -1,6 +1,7 @@
 package com.ohm.selenium.tests.login;
 
 import com.ohm.selenium.TestBase;
+import com.ohm.selenium.pages.DashBoardPage;
 import com.ohm.selenium.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,23 +18,19 @@ public class LoginTest extends TestBase {
         loginpage.typePassword("admin123");
         loginpage.clickLoginButton();
         //FIXME: Please add assertion to verify the Dashboard title here
+        DashBoardPage dashBoardPage = new DashBoardPage(getDriver());
+        Assert.assertEquals(dashBoardPage.getTitle(), "Dashboard");
     }
 
 
     @Test
-    public void testInvalidMethod() {
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-
-        //Creating instance of Login Pg
-        LoginPage loginpage = new LoginPage(driver);
-        loginpage.typeUsername("");
-        loginpage.typePassword("");
+    public void testInvalidPassword() {
+        LoginPage loginpage = new LoginPage(getDriver());
+        loginpage.typeUsername("Admin");
+        loginpage.typePassword("adf");
         loginpage.clickLoginButton();
 
-        String actualError = loginpage.getErrorMessageUsername();
-        Assert.assertEquals(actualError, "required");
-        driver.close();
+        Assert.assertEquals(loginpage.getError(), "Invalid credentials");
     }
 
 
