@@ -63,7 +63,7 @@ public class AddEmployeeTest extends TestBase{
             wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("//button[normalize-space()='Save']"))).click();
 
-            //driver.quit();
+
         }
     }
 
